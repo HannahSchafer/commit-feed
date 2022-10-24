@@ -8,11 +8,15 @@ const myHeaders = new Headers({
     'Authorization':  `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
 });
 
-export async function getCommits() {
-  await octokit.request('GET /repos/{owner}/{repo}/commits', {
+export async function getCommits(opts: any) {
+  const cooo = await octokit.request('GET /repos/{owner}/{repo}/commits', {
     RequestHeaders: myHeaders,
-    owner: 'm3db',
-    repo: 'm3',
+    owner: opts.user,
+    repo: opts.repository,
     per_page: 40,
-  }).then((ressult) => console.log("RES", ressult))
+  }).then((ressult) => {
+    return ressult
+  })
+
+  return cooo
 }
