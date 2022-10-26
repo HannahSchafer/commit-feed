@@ -1,8 +1,68 @@
-import React, { useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
+import useFetchCommits from "../../hooks/useFetchCommits";
+import CommitItem from "../CommitItem/CommitItem";
+import SkeletonListLoader from "../../baseComponents/SkeletonLoader/SkeletonListLoader";
+import { PATHS } from "../../constants";
+import styled from "styled-components";
+import { ICommitItem } from "../../types/types";
 
-function CommitList() {
-  return <div aria-label="List of commits">Commit List!</div>;
+export default function CommitList() {
+  const [pageNumber, setPageNumber] = useState(1);
+  const { user, repo } = useParams();
+  const { commits, hasError, hasNextPage, isLoading } = useFetchCommits(
+    pageNumber,
+    user,
+    repo
+  );
+
+  let intersectionObserver: any;
+  intersectionObserver = useRef<IntersectionObserver | null>(null);
+  const lastElementRef = useCallback(
+    (commit: any) => {
+      if (isLoading) return;
+
+      if (intersectionObserver.current) {
+        intersectionObserver.current.disconnect();
+      }
+
+      intersectionObserver.current = new IntersectionObserver((commits) => {
+        if (commits[0].isIntersecting && hasNextPage) {
+          setPageNumber((prev) => prev + 1);
+        }
+      });
+
+      if (commit) {
+        intersectionObserver.current?.observe(commit);
+      }
+    },
+    [hasNextPage, isLoading]
+  );
+
+  if (hasError) {
+    window.location.replace(PATHS.notFound);
+  }
+
+  return (
+    <CommitListContainer>
+      {commits.map((commitItem, index) => {
+        if (commits.length === index + 1) {
+          return (
+            <CommitItem
+              commitItem={commitItem}
+              key={index}
+              ref={lastElementRef}
+            />
+          );
+        }
+        return <CommitItem commitItem={commitItem} key={index} />;
+      })}
+      {isLoading && <SkeletonListLoader numRows={20}></SkeletonListLoader>}
+    </CommitListContainer>
+  );
 }
 
-export default CommitList;
+const CommitListContainer = styled.ul`
+  margin: 0;
+  padding: 0;
+`;

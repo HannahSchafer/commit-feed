@@ -3,14 +3,10 @@ import { COLORS } from "../Palette/Palette";
 
 interface ButtonProps {
   children: string;
-  isActive?: boolean;
   onClick: () => void;
 }
 
-export function Button({
-  children,
-  onClick,
-}: ButtonProps) {
+export function Button({ children, onClick }: ButtonProps) {
   return (
     <ButtonContainer
       aria-label="button"
@@ -26,7 +22,7 @@ const ButtonContainer = styled.div`
   align-items: center;
   background-color: ${COLORS.gray80};
   border-radius: 4px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
   color: ${COLORS.white};
   cursor: pointer;
   display: flex;

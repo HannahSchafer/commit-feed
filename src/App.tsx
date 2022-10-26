@@ -5,7 +5,7 @@ import NotFound from "./routes/NotFound";
 import { Navigate, Routes, Route } from "react-router-dom";
 import { CommitsContextProvider } from "./contexts/Store";
 import { PATHS } from "./constants";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { COLORS } from "./baseComponents/Palette/Palette";
 
 function App() {
@@ -16,7 +16,10 @@ function App() {
           <Route path={PATHS.home} element={<Home />} />
           <Route path={PATHS.commits} element={<Commits />} />
           <Route path={PATHS.notFound} element={<NotFound />} />
-          <Route path={PATHS.any} element={<Navigate replace to="/does/not/exist" />} />
+          <Route
+            path={PATHS.any}
+            element={<Navigate replace to="/does/not/exist" />}
+          />
         </Routes>
       </CommitsContextProvider>
     </AppContainer>

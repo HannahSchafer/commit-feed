@@ -1,74 +1,68 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useCallback, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useStoreContext } from "../contexts/Store";
-import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
+import getCopy from "./../utils/getCopy";
+import styled from "styled-components";
+import Button from "../baseComponents/Button/Button";
+import SkeletonLoader from "../baseComponents/SkeletonLoader/SkeletonLoader";
+import CommitList from "../components/CommitList/CommitList";
 
 function Commits() {
   const {
     state: { commitsData, formData },
-    actions: { setCommits, setFormData, fetchCommits },
+    actions: { setCommits, setFormData },
   } = useStoreContext();
   const { user, repo } = useParams();
-  useEffect(() => {
-    if (Object.keys(formData).length === 0) {
-      const opts = { user, repository: repo };
-      setFormData(opts);
-      fetchCommits(opts);
-    }
-  }, [formData, setCommits]);
+  const navigate = useNavigate();
+  const handleClickHome = () => {
+    navigate("/");
+  };
 
   return (
     <CommitsContainer aria-label="List of commits from selected repository">
-      <StyledHeader>Commits Feed</StyledHeader>
-      <StyledSubHeader>Showing results for \{user}\{repo}</StyledSubHeader>
-      {commitsData.map((commitItem, i) => {
-        return (
-          <StyledCommitItem key={i}>
-            <CommitContent style={{width: '200px'}}>{commitItem.commit.author.date}</CommitContent>
-            <CommitContent style={{width: '800px'}}>
-              <a href={commitItem.commit.url}>{commitItem.commit.message}</a>
-            </CommitContent>
-            <CommitContent>{commitItem.commit.author.name}</CommitContent>
-          </StyledCommitItem>
-        );
-      })}
+      <HeaderContainer>
+        <div>
+          <StyledHeader>{getCopy("commitsFeedHeading")}</StyledHeader>
+          <StyledSubHeader>
+            {getCopy("commitsFeedSubHeading")} \{user}\{repo}
+          </StyledSubHeader>
+        </div>
+        <ButtonContainer>
+          <Button onClick={() => handleClickHome()}>
+            {getCopy("newSearch")}
+          </Button>
+        </ButtonContainer>
+      </HeaderContainer>
+      <CommitList />
     </CommitsContainer>
   );
 }
 
-const CommitContent = styled.div`
-  font-family: sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+const ButtonContainer = styled.div`
+  height: 24px;
 `;
 
-const StyledHeader = styled.div`
-  font-family: sans-serif;
-  font-size: 24px;
-  font-weight: 600;
+const HeaderContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
   padding-bottom: 8px;
 `;
 
-const StyledSubHeader = styled.div`
+const StyledHeader = styled.h1`
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+`;
+
+const StyledSubHeader = styled.h2`
   font-family: sans-serif;
   font-size: 16px;
   font-weight: 600;
   padding-bottom: 8px;
 `;
 
-const CommitsContainer = styled.div`
-`;
-
-const StyledCommitItem = styled.div`
-  border-radius:  4px;
-  box-shadow: 0px 1px 6px rgba(0.2, 0.2, 0.2, 0.2);
-  display: flex;
-  margin-bottom: 8px;
-  padding: 4px;
-  background-color: white;
-`;
+const CommitsContainer = styled.div``;
 
 export default Commits;

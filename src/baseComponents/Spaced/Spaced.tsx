@@ -1,12 +1,7 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
 
 function Spaced() {
-
-  return (
-    <div aria-label="base-component-spaced">
-      Commit List!
-    </div>
-  );
+  return <div aria-label="spaced">Commit List!</div>;
 }
 
 export default Spaced;

@@ -2,30 +2,29 @@ import React from "react";
 import Detective from "../assets/detective.png";
 import { useNavigate } from "react-router-dom";
 import Button from "../baseComponents/Button/Button";
-import styled from 'styled-components';
+import getCopy from "./../utils/getCopy";
+import styled from "styled-components";
 
 function NotFound() {
   const navigate = useNavigate();
 
-  const handleClickHome = () =>  {
+  const handleClickHome = () => {
     navigate("/");
-  }
+  };
 
   return (
-    <NotFoundContainer aria-label="User or Repository could not be found">
+    <NotFoundContainer aria-label="User or Repository not found">
       <div>
-        <StyledHeader>Page Not Found</StyledHeader>
-        <StyledSubHeader>
-          We searched high and low but couldn't find what you're looking for.
-          Let's find a better place for you to go.
-        </StyledSubHeader>
+        <StyledHeader>{getCopy("notFoundHeading")}</StyledHeader>
+        <StyledSubHeader>{getCopy("notFoundSubHeading")}</StyledSubHeader>
         <ButtonContainer>
-        <Button onClick={() => handleClickHome()}>
-          Home
-        </Button>
+          <Button onClick={() => handleClickHome()}>{getCopy("home")}</Button>
         </ButtonContainer>
       </div>
-      <StyledImg src={Detective} alt="Green CDs" />
+      <StyledImg
+        src={Detective}
+        alt="A drawing of a young detective holding a magnifying glass"
+      />
     </NotFoundContainer>
   );
 }

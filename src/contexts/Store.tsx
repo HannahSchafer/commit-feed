@@ -101,11 +101,13 @@ export function CommitsContextProvider({
         });
       },
       fetchCommits: async (opts) => {
-        const response = await getCommits(opts).then((result) => {
-          store.actions.setCommits(result);
-        }).catch((e) => {
-          window.location.replace(PATHS.notFound);
-        })
+        const response = await getCommits(opts)
+          .then((result) => {
+            store.actions.setCommits(result);
+          })
+          .catch((e) => {
+            window.location.replace(PATHS.notFound);
+          });
       },
       submitRepository: async (data) => {
         store.actions.setFormData(data);

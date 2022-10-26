@@ -37,3 +37,10 @@ export interface IVerification {
   signature: string;
   payload: string;
 }
+
+export interface IParams {
+  user: string;
+  repository: string;
+  page: number;
+  signal: any;
+}
