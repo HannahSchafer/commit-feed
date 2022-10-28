@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Spaced from "../Spaced/Spaced";
+import Padded from "../Padded/Padded";
 
 interface ListItemProps {
   children: React.ReactNode;
@@ -6,9 +8,11 @@ interface ListItemProps {
 
 export function ListItem({ children }: ListItemProps) {
   return (
-    <ListItemContainer aria-label="list-item" data-alt="List Item">
-      {children}
-    </ListItemContainer>
+    <Spaced bottom={"8"}>
+      <ListItemContainer aria-label="list-item" data-alt="List Item">
+        <Padded all={"8"}>{children}</Padded>
+      </ListItemContainer>
+    </Spaced>
   );
 }
 
@@ -19,8 +23,6 @@ const ListItemContainer = styled.li`
   font-family: sans-serif;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 8px;
-  padding: 8px;
   background-color: white;
 `;
 

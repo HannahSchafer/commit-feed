@@ -35,6 +35,7 @@ const useFetchCommits = (
           return;
         }
         setHasError(true);
+        // TODO: add reporting to 3rd party logging (ex: Bugsnag)
       });
 
     return () => controller.abort();

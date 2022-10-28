@@ -6,5 +6,6 @@
   "newSearch": "New Search",
   "notFoundSubHeading": "We searched high and low but couldn't find what you're looking for. Let's find a better place for you to go.",
   "notFoundHeading": "Page Not Found",
-  "repoNameLabel": "Repository name"
+  "repoNameLabel": "Repository name",
+  "submit": "Submit"
 }

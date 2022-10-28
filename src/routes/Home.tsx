@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Search from "../assets/search.png";
-import { useNavigate } from "react-router-dom";
+import Padded from "../baseComponents/Padded/Padded";
+import { Link, useNavigate } from "react-router-dom";
+import RouteLink from "../baseComponents/RouteLink/RouteLink";
 import styled from "styled-components";
 import getCopy from "./../utils/getCopy";
 import { COLORS } from "../baseComponents/Palette/Palette";
@@ -22,6 +24,7 @@ function Home() {
         <StyledLabel>
           {getCopy("githubUserLabel")}
           <StyledInput
+            aria-label="github-user-input"
             type="text"
             name="githubUser"
             placeholder="Ex: m3db"
@@ -34,6 +37,7 @@ function Home() {
         <StyledLabel>
           {getCopy("repoNameLabel")}
           <StyledInput
+            aria-label="repository-input"
             type="text"
             name="repository"
             placeholder="Ex: m3"
@@ -43,20 +47,19 @@ function Home() {
             value={repository}
           />
         </StyledLabel>
-        <StyledSubmit
-          disabled={isSubmitDisabled}
-          type="submit"
-          value="Submit"
-        />
+        <RouteLink to={`/${githubUser}/${repository}`} aria-label="submit">
+          {getCopy("submit")}
+        </RouteLink>
       </StyledForm>
-      <StyledImg src={Search} alt="A drawing of a magniifying glass" />
+      <Padded all={"24"}>
+        <StyledImg src={Search} alt="A drawing of a magniifying glass" />
+      </Padded>
     </HomeContainer>
   );
 }
 
 const StyledImg = styled.img`
   height: 150px;
-  padding: 24px;
 `;
 
 const HomeContainer = styled.div`
@@ -72,21 +75,6 @@ const StyledInput = styled.input`
   font-weight: 600;
   height: 24px;
   padding-left: 4px;
-`;
-
-const StyledSubmit = styled.input.attrs(
-  (props: { disabled: boolean }) => props
-)`
-  background-color: ${(props) =>
-    props.disabled ? COLORS.gray80 : COLORS.black};
-  border: none;
-  border-radius: 6px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
-  color: ${COLORS.white};
-  font-family: sans-serif;
-  font-weight: 600;
-  height: 36px;
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 `;
 
 const StyledForm = styled.form`

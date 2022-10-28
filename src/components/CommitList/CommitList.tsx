@@ -1,5 +1,5 @@
-import { useState, useRef, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetchCommits from "../../hooks/useFetchCommits";
 import CommitItem from "../CommitItem/CommitItem";
 import SkeletonListLoader from "../../baseComponents/SkeletonLoader/SkeletonListLoader";
@@ -15,6 +15,13 @@ export default function CommitList() {
     user,
     repo
   );
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (hasError) {
+      navigate("/does/not/exist");
+    }
+  }, [hasError, navigate]);
 
   let intersectionObserver: any;
   intersectionObserver = useRef<IntersectionObserver | null>(null);
@@ -38,10 +45,6 @@ export default function CommitList() {
     },
     [hasNextPage, isLoading]
   );
-
-  if (hasError) {
-    window.location.replace(PATHS.notFound);
-  }
 
   return (
     <CommitListContainer>

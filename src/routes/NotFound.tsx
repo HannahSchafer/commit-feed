@@ -1,9 +1,11 @@
 import React from "react";
 import Detective from "../assets/detective.png";
-import { useNavigate } from "react-router-dom";
-import Button from "../baseComponents/Button/Button";
+import { Link, useNavigate } from "react-router-dom";
+import RouteLink from "../baseComponents/RouteLink/RouteLink";
 import getCopy from "./../utils/getCopy";
 import styled from "styled-components";
+import { COLORS } from "../baseComponents/Palette/Palette";
+import Padded from "../baseComponents/Padded/Padded";
 
 function NotFound() {
   const navigate = useNavigate();
@@ -16,10 +18,14 @@ function NotFound() {
     <NotFoundContainer aria-label="User or Repository not found">
       <div>
         <StyledHeader>{getCopy("notFoundHeading")}</StyledHeader>
-        <StyledSubHeader>{getCopy("notFoundSubHeading")}</StyledSubHeader>
-        <ButtonContainer>
-          <Button onClick={() => handleClickHome()}>{getCopy("home")}</Button>
-        </ButtonContainer>
+        <Padded bottom={"8"}>
+          <StyledSubHeader>{getCopy("notFoundSubHeading")}</StyledSubHeader>
+        </Padded>
+        <LinkContainer>
+          <RouteLink to="/" aria-label="home-link">
+            {getCopy("home")}
+          </RouteLink>
+        </LinkContainer>
       </div>
       <StyledImg
         src={Detective}
@@ -29,22 +35,21 @@ function NotFound() {
   );
 }
 
-const ButtonContainer = styled.div`
+const LinkContainer = styled.div`
   max-width: 200px;
 `;
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.h1`
   font-family: sans-serif;
   font-weight: 600;
   font-size: 48px;
-  padding-bottom: 16px;
+  margin: 0;
 `;
 
-const StyledSubHeader = styled.div`
+const StyledSubHeader = styled.h2`
   font-family: sans-serif;
   font-weight: 600;
   font-size: 24px;
-  padding-bottom: 16px;
 `;
 
 const NotFoundContainer = styled.div`

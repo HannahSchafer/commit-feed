@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import cx from "classnames";
-const spaceSizes = [
+const paddingSizes = [
   "4",
   "8",
   "12",
@@ -12,20 +12,20 @@ const spaceSizes = [
   "56",
   "64",
 ] as const;
-type Spacing = typeof spaceSizes[number];
+type Padding = typeof paddingSizes[number];
 
-interface SpacedProps {
-  all?: Spacing;
-  bottom?: Spacing;
+interface PaddedProps {
+  all?: Padding;
+  bottom?: Padding;
   children: React.ReactNode;
-  left?: Spacing;
-  horizontal?: Spacing;
-  right?: Spacing;
-  top?: Spacing;
-  vertical?: Spacing;
+  left?: Padding;
+  horizontal?: Padding;
+  right?: Padding;
+  top?: Padding;
+  vertical?: Padding;
 }
 
-function Spaced({
+function Padded({
   all,
   bottom,
   children,
@@ -34,9 +34,9 @@ function Spaced({
   right,
   top,
   vertical,
-}: SpacedProps) {
+}: PaddedProps) {
   return (
-    <StyledSpaced
+    <StyledPadded
       all={all}
       bottom={bottom}
       left={left}
@@ -56,11 +56,11 @@ function Spaced({
       aria-label="spaced"
     >
       {children}
-    </StyledSpaced>
+    </StyledPadded>
   );
 }
 
-const StyledSpaced = styled.div.attrs(
+const StyledPadded = styled.div.attrs(
   (props: {
     all: string;
     bottom: string;
@@ -72,34 +72,34 @@ const StyledSpaced = styled.div.attrs(
   }) => props
 )`
   &.all {
-    margin: ${(props) => `${props.all}px`};
+    padding: ${(props) => `${props.all}px`};
   }
 
   &.bottom {
-    margin-bottom: ${(props) => `${props.bottom}px`};
+    padding-bottom: ${(props) => `${props.bottom}px`};
   }
 
   &.left {
-    margin-left: ${(props) => `${props.left}px`};
+    padding-left: ${(props) => `${props.left}px`};
   }
 
   &.horizontal {
-    margin-left: ${(props) => `${props.horizontal}px`};
-    margin-right: ${(props) => `${props.horizontal}px`};
+    padding-left: ${(props) => `${props.horizontal}px`};
+    padding-right: ${(props) => `${props.horizontal}px`};
   }
 
   &.right {
-    margin-right: ${(props) => `${props.right}px`};
+    padding-right: ${(props) => `${props.right}px`};
   }
 
   &.top {
-    margin-top: ${(props) => `${props.top}px`};
+    padding-top: ${(props) => `${props.top}px`};
   }
 
   &.vertical {
-    margin-top: ${(props) => `${props.vertical}px`};
-    margin-bottom: ${(props) => `${props.vertical}px`};
+    padding-top: ${(props) => `${props.vertical}px`};
+    padding-bottom: ${(props) => `${props.vertical}px`};
   }
 `;
 
-export default Spaced;
+export default Padded;

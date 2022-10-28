@@ -9,8 +9,8 @@ export function SkeletonListLoader({ numRows }: SkeletonListLoaderProps) {
   return (
     <div aria-label="skeleton-list-loader" data-alt="Skeleton List Loader">
       {[...Array(numRows)].map((e, i) => (
-        <ListItem>
-          <SkeletonLoader key={i} />
+        <ListItem key={i}>
+          <SkeletonLoader />
         </ListItem>
       ))}
     </div>
