@@ -21,8 +21,8 @@ function Home() {
   return (
     <HomeContainer aria-label="Page to input Github user and repository name">
       <StyledForm onSubmit={(e) => handleSubmit(e)}>
-        <StyledLabel>
-          {getCopy("githubUserLabel")}
+        <InputContainer>
+          <StyledLabel>{getCopy("githubUserLabel")}</StyledLabel>
           <StyledInput
             aria-label="github-user-input"
             type="text"
@@ -33,9 +33,9 @@ function Home() {
             onChange={(e) => setGithubUser(e.target.value)}
             value={githubUser}
           />
-        </StyledLabel>
-        <StyledLabel>
-          {getCopy("repoNameLabel")}
+        </InputContainer>
+        <InputContainer>
+          <StyledLabel>{getCopy("repoNameLabel")}</StyledLabel>
           <StyledInput
             aria-label="repository-input"
             type="text"
@@ -46,26 +46,51 @@ function Home() {
             onChange={(e) => setRepository(e.target.value)}
             value={repository}
           />
-        </StyledLabel>
+        </InputContainer>
         <RouteLink to={`/${githubUser}/${repository}`} aria-label="submit">
           {getCopy("submit")}
         </RouteLink>
       </StyledForm>
       <Padded all={"24"}>
-        <StyledImg src={Search} alt="A drawing of a magniifying glass" />
+        <ImgContainer>
+          <StyledImg src={Search} alt="A drawing of a magniifying glass" />
+        </ImgContainer>
       </Padded>
     </HomeContainer>
   );
 }
 
+const InputContainer = styled.div`
+  display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const ImgContainer = styled.div`
+  @media (max-width: 768px) {
+    margin-top: 4px;
+  }
+`;
+
 const StyledImg = styled.img`
-  height: 150px;
+  display: block;
+  object-fit: cover;
+  max-height: 150px;
+
+  @media (max-width: 768px) {
+    max-height: 150px;
+  }
 `;
 
 const HomeContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -75,6 +100,11 @@ const StyledInput = styled.input`
   font-weight: 600;
   height: 24px;
   padding-left: 4px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-bottom: 16px;
+  }
 `;
 
 const StyledForm = styled.form`

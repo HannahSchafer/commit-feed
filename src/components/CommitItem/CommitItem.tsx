@@ -17,13 +17,13 @@ const CommitItem = React.forwardRef<HTMLInputElement, CommitItemProps>(
     const commitBody = (
       <ListItem>
         <CommitContainer>
-          <CommitContent style={{ width: "200px" }}>
+          <CommitContent style={{ minWidth: "200px", width: "200px", fontWeight: "500" }}>
             {humanizedDate}
           </CommitContent>
-          <CommitContent style={{ width: "800px" }}>
+          <CommitContent style={{ width: "800px", marginInline: "16px" }}>
             <a href={commitItem.commit.url}>{commitItem.commit.message}</a>
           </CommitContent>
-          <CommitContent>{commitItem.commit.author.name}</CommitContent>
+          <CommitContent style={{ minWidth: "140px" }}>{commitItem.commit.author.name}</CommitContent>
         </CommitContainer>
       </ListItem>
     );

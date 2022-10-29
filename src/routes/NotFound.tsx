@@ -27,16 +27,22 @@ function NotFound() {
           </RouteLink>
         </LinkContainer>
       </div>
-      <StyledImg
-        src={Detective}
-        alt="A drawing of a young detective holding a magnifying glass"
-      />
+      <ImgContainer>
+        <StyledImg
+          src={Detective}
+          alt="A drawing of a young detective holding a magnifying glass"
+        />
+      </ImgContainer>
     </NotFoundContainer>
   );
 }
 
 const LinkContainer = styled.div`
   max-width: 200px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const StyledHeader = styled.h1`
@@ -55,11 +61,28 @@ const StyledSubHeader = styled.h2`
 const NotFoundContainer = styled.div`
   align-items: center;
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const ImgContainer = styled.div`
+  @media (max-width: 768px) {
+    margin-top: 4px;
+  }
 `;
 
 const StyledImg = styled.img`
-  width: 480px;
-  height: 480px;
+  display: block;
+  object-fit: cover;
+  max-width: 480px;
+  max-height: 480px;
+
+  @media (max-width: 768px) {
+    max-width: 320px;
+    max-height: 320px;
+  }
 `;
 
 export default NotFound;

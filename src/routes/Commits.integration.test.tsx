@@ -48,8 +48,8 @@ describe("renders Commits route", () => {
     // loading
     expect(queryByLabelText("skeleton-list-loader")).toBeInTheDocument();
     // renders commit data
-    const author = await screen.findAllByText("Andrew Mains");
-    expect(author.length).toBe(3);
+    const authorInstances = await screen.findAllByText("Andrew Mains");
+    expect(authorInstances.length).toBe(3);
     // loading stopped
     expect(queryByLabelText("skeleton-list-loader")).toBeNull();
 

@@ -23,7 +23,7 @@ const RouteLinkContainer = styled(Link)`
   background-color: ${COLORS.gray80};
   border-radius: 4px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
-  color: ${COLORS.white};
+  color: ${COLORS.primaryBg};
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -33,7 +33,7 @@ const RouteLinkContainer = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    background-color: ${COLORS.black};
+    background-color: ${COLORS.primaryText};
   }
 `;
 
