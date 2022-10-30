@@ -2,7 +2,7 @@
 
 1. clone the repo
 2. run npm install
-3. inn `.env.dev`  and `.env.prod` replace `YOUR_GITHUB_TOKEN` with your github token
+3. in `.env.dev`  and `.env.prod` replace `YOUR_GITHUB_TOKEN` with your github token
 4. run npm start
 5. open http://localhost:3000 to view it in the browser.
 6. test out the 3 routes:
