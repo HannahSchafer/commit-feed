@@ -38,6 +38,10 @@ const CommitItem = React.forwardRef<HTMLInputElement, CommitItemProps>(
   }
 );
 
+const AuthorContainer = styled.div`
+  min-width: 140px;
+`;
+
 const DateContainer = styled.div`
   font-weight: 500;
   min-width: 200px;
@@ -51,7 +55,7 @@ const DateContainer = styled.div`
 const CommitContainer = styled.div`
   white-space: nowrap;
   margin-inline: 16px;
-  max-width: 800px;
+  width: 800px;
   overflow: hidden;
   text-overflow: ellipsis;
 
@@ -59,11 +63,8 @@ const CommitContainer = styled.div`
     margin-bottom: 4px;
     margin-inline: 0;
     max-width: 600px;
+    width: initial;
   }
-`;
-
-const AuthorContainer = styled.div`
-  min-width: 140px;
 `;
 
 const CommitContentContainer = styled.div`

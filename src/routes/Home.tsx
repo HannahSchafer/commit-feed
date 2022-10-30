@@ -47,7 +47,11 @@ function Home() {
             value={repository}
           />
         </InputContainer>
-        <RouteLink to={`/${githubUser}/${repository}`} aria-label="submit">
+        <RouteLink
+          isDisabled={isSubmitDisabled}
+          to={`/${githubUser}/${repository}`}
+          aria-label="submit"
+        >
           {getCopy("submit")}
         </RouteLink>
       </StyledForm>
