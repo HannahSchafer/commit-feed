@@ -29,17 +29,12 @@
 * styled-components: [https://styled-components.com](styled-components)
 * msw: [https://mswjs.io](msw) for mocking API calls in testing
 
-## Future Functionality
+## Testing (Unit and Integration)
 
-V2:
+####  Currently at 91.9% coverage:
 
-* Add caching (if desired? i.e. If I navigate away from the `/{owner}/{repo}` route and navigate back again, is it ok to pull from data already in the store? or would we want to ensure latest commits displayed?)
-* Add more base components (i.e. Text, Header, etc.) and break into separate design system library or module
-* Add key commands / tabbing through the list of commits
-* Add Storybooks
-* Work with designer to fully flesh out mobile design
-* Add E2E testing (i.e. Cypress)
-* Add analytics events (Google, Bugsnag, etc.)
+<img width="682" alt="test_coverage" src="https://user-images.githubusercontent.com/13912119/198897138-bf16d9f9-c2b9-452e-b2b0-2cd8bc137a81.png">
+
 
 ## Screenshots of Features and Functionality
 
@@ -76,3 +71,14 @@ https://user-images.githubusercontent.com/13912119/198896296-51b13645-aa2e-4453-
 <img width="419" alt="page_not_found_mobile" src="https://user-images.githubusercontent.com/13912119/198896276-f986c79e-b8ba-49f3-bcdd-217bd79b4fcb.png">
 
 
+## Future Functionality
+
+V2:
+
+* Add caching (if desired? i.e. If I navigate away from the `/{owner}/{repo}` route and navigate back again, is it ok to pull from data already in the store? or would we want to ensure latest commits displayed?)
+* Add more base components (i.e. Text, Header, etc.) and break into separate design system library or module
+* Add key commands / tabbing through the list of commits
+* Add Storybooks
+* Work with designer to fully flesh out mobile design
+* Add E2E testing (i.e. Cypress)
+* Add analytics events (Google, Bugsnag, etc.)
