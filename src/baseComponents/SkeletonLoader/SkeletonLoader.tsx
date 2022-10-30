@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { COLORS } from "../Palette/Palette";
 
 export function SkeletonLoader() {
   return (

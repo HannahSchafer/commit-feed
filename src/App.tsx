@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Commits from "./routes/Commits";
 import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";

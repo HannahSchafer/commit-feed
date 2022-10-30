@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Search from "../assets/search.png";
 import Padded from "../baseComponents/Padded/Padded";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import RouteLink from "../baseComponents/RouteLink/RouteLink";
 import styled from "styled-components";
 import getCopy from "./../utils/getCopy";
-import { COLORS } from "../baseComponents/Palette/Palette";
 
 function Home() {
   const navigate = useNavigate();

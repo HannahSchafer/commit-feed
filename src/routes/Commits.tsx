@@ -1,20 +1,13 @@
-import React, { useEffect, useCallback, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
 import getCopy from "./../utils/getCopy";
 import styled from "styled-components";
 import RouteLink from "../baseComponents/RouteLink/RouteLink";
-import SkeletonLoader from "../baseComponents/SkeletonLoader/SkeletonLoader";
 import CommitsList from "../components/CommitsList/CommitsList";
 import Padded from "../baseComponents/Padded/Padded";
-import { COLORS } from "../baseComponents/Palette/Palette";
 
 function Commits() {
   const { user, repo } = useParams();
-  const navigate = useNavigate();
-  const handleClickHome = () => {
-    navigate("/");
-  };
 
   return (
     <CommitsContainer aria-label="List of commits from selected repository">

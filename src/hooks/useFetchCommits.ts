@@ -38,7 +38,7 @@ const useFetchCommits = (
       });
 
     return () => controller.abort();
-  }, [pageNumber, user, repo]);
+  }, [pageNumber, user, repo, setCommitsToStore]);
 
   return { isLoading, hasError, hasNextPage };
 };

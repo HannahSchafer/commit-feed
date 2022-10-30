@@ -1,19 +1,11 @@
 import React from "react";
 import Detective from "../assets/detective.png";
-import { Link, useNavigate } from "react-router-dom";
 import RouteLink from "../baseComponents/RouteLink/RouteLink";
 import getCopy from "./../utils/getCopy";
 import styled from "styled-components";
-import { COLORS } from "../baseComponents/Palette/Palette";
 import Padded from "../baseComponents/Padded/Padded";
 
 function NotFound() {
-  const navigate = useNavigate();
-
-  const handleClickHome = () => {
-    navigate("/");
-  };
-
   return (
     <NotFoundContainer aria-label="User or Repository not found">
       <div>

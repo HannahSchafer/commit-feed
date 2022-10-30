@@ -1,7 +1,5 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { ICommitItem } from "../types/types";
-import { PATHS } from "../constants";
-import { getCommits } from "../api/api";
 
 export enum ActionTypes {
   SET_COMMITS_DATA = "SET_COMMITS_DATA",

@@ -4,9 +4,7 @@ import useFetchCommits from "../../hooks/useFetchCommits";
 import { useCommitsContext } from "../../contexts/CommitsContext";
 import CommitItem from "../CommitItem/CommitItem";
 import SkeletonListLoader from "../../baseComponents/SkeletonLoader/SkeletonListLoader";
-import { PATHS } from "../../constants";
 import styled from "styled-components";
-import { ICommitItem } from "../../types/types";
 
 export default function CommitsList() {
   const [pageNumber, setPageNumber] = useState(1);
