@@ -12,7 +12,7 @@ function Home() {
   const [githubUser, setGithubUser] = useState("");
   const [repository, setRepository] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     navigate(`/${githubUser}/${repository}`);
     e.preventDefault();
   };

@@ -15,37 +15,63 @@ const CommitItem = React.forwardRef<HTMLInputElement, CommitItemProps>(
       "MMMM DD, YYYY h:mm A"
     );
     const commitBody = (
-      <ListItem>
-        <CommitContainer>
-          <CommitContent style={{ minWidth: "200px", width: "200px", fontWeight: "500" }}>
-            {humanizedDate}
-          </CommitContent>
-          <CommitContent style={{ width: "800px", marginInline: "16px" }}>
+      <ListItem showVerificationBar>
+        <CommitContentContainer>
+          <DateContainer>{humanizedDate}</DateContainer>
+          <CommitContainer>
             <a href={commitItem.commit.url}>{commitItem.commit.message}</a>
-          </CommitContent>
-          <CommitContent style={{ minWidth: "140px" }}>{commitItem.commit.author.name}</CommitContent>
-        </CommitContainer>
+          </CommitContainer>
+          <AuthorContainer>{commitItem.commit.author.name}</AuthorContainer>
+        </CommitContentContainer>
       </ListItem>
     );
 
     const content = ref ? (
-      <article ref={ref}>{commitBody}</article>
+      <article aria-label="commit-item-with-ref" ref={ref}>
+        {commitBody}
+      </article>
     ) : (
-      <article>{commitBody}</article>
+      <article aria-label="commit-item">{commitBody}</article>
     );
 
     return content;
   }
 );
 
-const CommitContent = styled.div`
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+const DateContainer = styled.div`
+  font-weight: 500;
+  min-width: 200px;
+  width: 200px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 4px;
+  }
 `;
 
 const CommitContainer = styled.div`
+  white-space: nowrap;
+  margin-inline: 16px;
+  max-width: 800px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 768px) {
+    margin-bottom: 4px;
+    margin-inline: 0;
+    max-width: 600px;
+  }
+`;
+
+const AuthorContainer = styled.div`
+  min-width: 140px;
+`;
+
+const CommitContentContainer = styled.div`
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export default CommitItem;

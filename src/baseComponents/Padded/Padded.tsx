@@ -53,7 +53,7 @@ function Padded({
         top: top,
         vertical: vertical,
       })}
-      aria-label="spaced"
+      aria-label="padded"
     >
       {children}
     </StyledPadded>

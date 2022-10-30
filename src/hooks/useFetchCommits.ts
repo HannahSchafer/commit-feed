@@ -5,9 +5,9 @@ import { ICommitItem } from "../types/types";
 const useFetchCommits = (
   pageNumber: number = 1,
   user: string = "",
-  repo: string = ""
+  repo: string = "",
+  setCommitsToStore: (commits: ICommitItem[]) => void
 ) => {
-  const [commits, setCommits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(false);
@@ -24,8 +24,7 @@ const useFetchCommits = (
       repository: repo,
     })
       .then((commitData) => {
-        // @ts-ignore
-        setCommits((prev) => [...(prev as any), ...commitData]);
+        setCommitsToStore(commitData as ICommitItem[]);
         setHasNextPage(Boolean(commitData.length));
         setIsLoading(false);
       })
@@ -41,7 +40,7 @@ const useFetchCommits = (
     return () => controller.abort();
   }, [pageNumber, user, repo]);
 
-  return { isLoading, hasError, commits, hasNextPage };
+  return { isLoading, hasError, hasNextPage };
 };
 
 export default useFetchCommits;

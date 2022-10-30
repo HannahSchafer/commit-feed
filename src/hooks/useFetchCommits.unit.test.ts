@@ -20,16 +20,16 @@ afterAll(() => server.close());
 describe("useFetchCommits", () => {
   it("fetches data successfully", async () => {
     let pageNumber = 1;
-    let user = "user";
-    let repo = "repo";
+    const user = "user";
+    const repo = "repo";
+    const setCommits = jest.fn();
     const { result, waitForNextUpdate } = renderHook(() =>
-      useFetchCommits(pageNumber, user, repo)
+      useFetchCommits(pageNumber, user, repo, setCommits)
     );
 
     expect(result.current).toMatchObject({
       isLoading: true,
       hasError: false,
-      commits: [],
       hasNextPage: false,
     });
 
@@ -38,6 +38,6 @@ describe("useFetchCommits", () => {
     expect(result.current.isLoading).toBe(false);
     expect(result.current.hasError).toBe(false);
     expect(result.current.hasNextPage).toBe(true);
-    expect(result.current.commits.length).toBe(19);
+    expect(setCommits).toHaveBeenCalledWith(MOCK_COMMITS);
   });
 });
