@@ -4,14 +4,13 @@
 2. run npm install
 3. run npm start
 4. open http://localhost:3000 to view it in the browser.
-5. test out the 3 routes: 
+5. test out the 3 routes:
   a.)  `/`
   b.) `/{repo_owner}/{repo_name}`
   c.) `/does/not/exist`
 
 ## How to run the test suite
 `npm test` launches the test runner in the interactive watch mode.
-`npm  test -- --coverage --watchAll` launches the test runner and will display test coverage by file.
 
 ## Technologies Used
 * React
@@ -51,7 +50,7 @@ V2:
 
 <img width="1417" alt="home_desktop_button_active" src="https://user-images.githubusercontent.com/13912119/198896287-df8d417c-cfb6-4f1c-8143-6fe57a8060e4.png">
 
-#### Home Route -  Mobile 
+#### Home Route -  Mobile
 
 <img width="362" alt="home_mobile" src="https://user-images.githubusercontent.com/13912119/198896279-c974f59f-5a7e-4041-a7b0-d19b3f9bb0f2.png">
 
@@ -74,5 +73,3 @@ https://user-images.githubusercontent.com/13912119/198896296-51b13645-aa2e-4453-
 #### Not Found Route - -  Mobile
 
 <img width="419" alt="page_not_found_mobile" src="https://user-images.githubusercontent.com/13912119/198896276-f986c79e-b8ba-49f3-bcdd-217bd79b4fcb.png">
-
-
