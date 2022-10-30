@@ -1,5 +1,5 @@
 import { Octokit } from "octokit";
-import { IParams } from "./types/types";
+import { IParams } from "../types/types";
 
 const octokit = new Octokit({
   auth: process.env.REACT_APP_GITHUB_TOKEN,

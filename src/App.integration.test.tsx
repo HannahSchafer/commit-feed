@@ -14,8 +14,7 @@ import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
 
 import { MOCK_COMMITS } from "./testUtils/mockData";
-const FAKE_OWNER = "m3db";
-const FAKE_REPO = "m3";
+import { FAKE_REPO_OWNER, FAKE_REPO } from "./testUtils/constants";
 import MockIntersectionObserver from "./testUtils/mockIntersectionObserver";
 import App from "./App";
 
@@ -56,10 +55,10 @@ describe("App", () => {
         "Page to input Github user and repository name"
       );
       expect(homePage).toBeInTheDocument();
-      userEvent.type(getByPlaceholderText("Ex: m3db"), FAKE_OWNER);
+      userEvent.type(getByPlaceholderText("Ex: m3db"), FAKE_REPO_OWNER);
       expect(getByLabelText("github-user-input")).toHaveAttribute(
         "value",
-        FAKE_OWNER
+        FAKE_REPO_OWNER
       );
       userEvent.type(getByPlaceholderText("Ex: m3"), FAKE_REPO);
       expect(getByLabelText("repository-input")).toHaveAttribute(

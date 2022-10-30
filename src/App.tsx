@@ -4,7 +4,7 @@ import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
 import Padded from "./baseComponents/Padded/Padded";
 import { Navigate, Routes, Route } from "react-router-dom";
-import { CommitsContextProvider } from "./contexts/Store";
+import { CommitsContextProvider } from "./contexts/CommitsContext";
 import { PATHS } from "./constants";
 import styled from "styled-components";
 import { COLORS } from "./baseComponents/Palette/Palette";

@@ -1,19 +1,26 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetchCommits from "../../hooks/useFetchCommits";
+import { useCommitsContext } from "../../contexts/CommitsContext";
 import CommitItem from "../CommitItem/CommitItem";
 import SkeletonListLoader from "../../baseComponents/SkeletonLoader/SkeletonListLoader";
 import { PATHS } from "../../constants";
 import styled from "styled-components";
 import { ICommitItem } from "../../types/types";
 
-export default function CommitList() {
+export default function CommitsList() {
   const [pageNumber, setPageNumber] = useState(1);
   const { user, repo } = useParams();
-  const { commits, hasError, hasNextPage, isLoading } = useFetchCommits(
+  const {
+    state: { commitsData },
+    actions: { setCommits },
+  } = useCommitsContext();
+
+  const { hasNextPage, hasError, isLoading } = useFetchCommits(
     pageNumber,
     user,
-    repo
+    repo,
+    setCommits
   );
 
   const navigate = useNavigate();
@@ -23,10 +30,9 @@ export default function CommitList() {
     }
   }, [hasError, navigate]);
 
-  let intersectionObserver: any;
-  intersectionObserver = useRef<IntersectionObserver | null>(null);
+  let intersectionObserver = useRef<IntersectionObserver | null>(null);
   const lastElementRef = useCallback(
-    (commit: any) => {
+    (commit: HTMLInputElement) => {
       if (isLoading) return;
 
       if (intersectionObserver.current) {
@@ -47,9 +53,9 @@ export default function CommitList() {
   );
 
   return (
-    <CommitListContainer>
-      {commits.map((commitItem, index) => {
-        if (commits.length === index + 1) {
+    <CommitsListContainer>
+      {commitsData?.map((commitItem, index) => {
+        if (commitsData.length === index + 1) {
           return (
             <CommitItem
               commitItem={commitItem}
@@ -61,11 +67,11 @@ export default function CommitList() {
         return <CommitItem commitItem={commitItem} key={index} />;
       })}
       {isLoading && <SkeletonListLoader numRows={20}></SkeletonListLoader>}
-    </CommitListContainer>
+    </CommitsListContainer>
   );
 }
 
-const CommitListContainer = styled.ul`
+const CommitsListContainer = styled.ul`
   margin: 0;
   padding: 0;
 `;

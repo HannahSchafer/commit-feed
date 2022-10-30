@@ -10,13 +10,13 @@ export interface ICommit {
   message: string;
   tree: ITree;
   url: string;
-  commentCount: number;
+  comment_count: number;
   verification: IVerification;
 }
 
 export interface ICommitItem {
   sha: string;
-  nodeId: string;
+  node_id: string;
   commit: ICommit;
 }
 
@@ -24,6 +24,29 @@ export interface ICommitter {
   name: string;
   email: string;
   date: string;
+}
+
+export interface IParams {
+  user: string;
+  repository: string;
+  page: number;
+  signal: AbortSignal;
+}
+
+export interface ITranslation {
+  commitsFeedHeading: string;
+  commitsFeedSubHeading: string;
+  githubUserLabel: string;
+  home: string;
+  newSearch: string;
+  notFoundSubHeading: string;
+  notFoundHeading: string;
+  repoNameLabel: string;
+  submit: string;
+}
+
+export interface ITranslations {
+  enUS: ITranslation;
 }
 
 export interface ITree {
@@ -36,11 +59,4 @@ export interface IVerification {
   reason: string;
   signature: string;
   payload: string;
-}
-
-export interface IParams {
-  user: string;
-  repository: string;
-  page: number;
-  signal: any;
 }

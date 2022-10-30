@@ -2,12 +2,11 @@ import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
-import CustomRouter from "../testUtils/customRouter";
 
+import CustomRouter from "../testUtils/customRouter";
 import Home from "./Home";
 import MockIntersectionObserver from "../testUtils/mockIntersectionObserver";
-const FAKE_OWNER = "fake_owner";
-const FAKE_REPO = "fake_repo";
+import { FAKE_REPO_OWNER, FAKE_REPO } from "./../testUtils/constants";
 
 describe("renders Home route", () => {
   beforeAll(() => {
@@ -25,10 +24,10 @@ describe("renders Home route", () => {
       "Page to input Github user and repository name"
     );
     expect(page).toBeInTheDocument();
-    userEvent.type(getByPlaceholderText("Ex: m3db"), FAKE_OWNER);
+    userEvent.type(getByPlaceholderText("Ex: m3db"), FAKE_REPO_OWNER);
     expect(getByLabelText("github-user-input")).toHaveAttribute(
       "value",
-      FAKE_OWNER
+      FAKE_REPO_OWNER
     );
     userEvent.type(getByPlaceholderText("Ex: m3"), FAKE_REPO);
     expect(getByLabelText("repository-input")).toHaveAttribute(
@@ -39,7 +38,9 @@ describe("renders Home route", () => {
     await userEvent.click(getByText("Submit"));
 
     act(() => {
-      expect(history.location.pathname).toBe(`/${FAKE_OWNER}/${FAKE_REPO}`);
+      expect(history.location.pathname).toBe(
+        `/${FAKE_REPO_OWNER}/${FAKE_REPO}`
+      );
     });
   });
 });

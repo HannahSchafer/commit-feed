@@ -1,6 +1,7 @@
 import enUS from "./enUS.json";
+import { ITranslations } from "../types/types";
 
-const translations: any = {
+const translations: ITranslations = {
   enUS,
 };
 

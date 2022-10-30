@@ -1,20 +1,15 @@
 import React, { useEffect, useCallback, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useStoreContext } from "../contexts/Store";
 import { useNavigate } from "react-router-dom";
 import getCopy from "./../utils/getCopy";
 import styled from "styled-components";
 import RouteLink from "../baseComponents/RouteLink/RouteLink";
 import SkeletonLoader from "../baseComponents/SkeletonLoader/SkeletonLoader";
-import CommitList from "../components/CommitList/CommitList";
+import CommitsList from "../components/CommitsList/CommitsList";
 import Padded from "../baseComponents/Padded/Padded";
 import { COLORS } from "../baseComponents/Palette/Palette";
 
 function Commits() {
-  const {
-    state: { commitsData, formData },
-    actions: { setCommits, setFormData },
-  } = useStoreContext();
   const { user, repo } = useParams();
   const navigate = useNavigate();
   const handleClickHome = () => {
@@ -38,7 +33,7 @@ function Commits() {
           </RouteLink>
         </HeaderContainer>
       </Padded>
-      <CommitList />
+      <CommitsList />
     </CommitsContainer>
   );
 }
@@ -47,12 +42,21 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding-bottom: 16px;
+  }
 `;
 
 const StyledHeader = styled.h1`
   font-family: sans-serif;
   font-size: 24px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const StyledSubHeader = styled.h2`
