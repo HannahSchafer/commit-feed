@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+## How to run this app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. clone the repo
+2. run npm install
+3. run npm start
+4. open http://localhost:3000 to view it in the browser.
+5. test out the 3 routes: 
+  a.)  `/`
+  b.) `/{repo_owner}/{repo_name}`
+  c.) `/does/not/exist`
 
-## Available Scripts
+## How to run the test suite
+`npm test` launches the test runner in the interactive watch mode.
+`npm  test -- --coverage --watchAll` launches the test runner and will display test coverage by file.
 
-In the project directory, you can run:
+## Technologies Used
+* React
+* Typescript
+* React Router
+* React Context API
+* React Testing Library
+* Octokit
+* Webpack
+* Babel
+* Jest
+* prettier: [https://prettier.io](Prettier) for code formatting
+* moment.js: [https://momentjs.com](moment.js) for formatting datetime object
+* classnames: [https://www.npmjs.com/package/classnames](classnames)
+* styled-components: [https://styled-components.com](styled-components)
+* msw: [https://mswjs.io](msw) for mocking API calls in testing
 
-### `npm start`
+## Future Functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+V2:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Add caching (if desired? i.e. If I navigate away from the `/{owner}/{repo}` route and navigate back again, is it ok to pull from data already in the store? or would we want to ensure latest commits displayed?)
+* Add more base components (i.e. Text, Header, etc.) and break into separate design system library or module
+* Add key commands / tabbing through the list of commits
+* Add Storybooks
+* Work with designer to fully flesh out mobile design
+* Add E2E testing (i.e. Cypress)
+* Add analytics events (Google, Bugsnag, etc.)
 
-### `npm test`
+## Screenshots of Features and Functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Home Route - Desktop Button Disabled
 
-### `npm run build`
+<img width="1418" alt="home_desktop_3" src="https://user-images.githubusercontent.com/13912119/198896378-c9383c8d-cdae-424c-b84e-1b4229d0407c.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Home Route - Desktop Button Active (based on input validation)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img width="1417" alt="home_desktop_button_active" src="https://user-images.githubusercontent.com/13912119/198896287-df8d417c-cfb6-4f1c-8143-6fe57a8060e4.png">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Home Route -  Mobile 
 
-### `npm run eject`
+<img width="362" alt="home_mobile" src="https://user-images.githubusercontent.com/13912119/198896279-c974f59f-5a7e-4041-a7b0-d19b3f9bb0f2.png">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Commits Route -  Desktop - Loading State
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+https://user-images.githubusercontent.com/13912119/198896296-51b13645-aa2e-4453-b727-182a26e8c47d.mov
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Commits Route -  Desktop - Data Rendered
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img width="1416" alt="commits_route_desktop" src="https://user-images.githubusercontent.com/13912119/198896304-1213f107-9599-4a71-80a4-4520794040ca.png">
 
-## Learn More
+#### Commits Route -  Mobile
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img width="377" alt="commits_route_mobile" src="https://user-images.githubusercontent.com/13912119/198896299-439450dc-59b2-4086-bcb2-e0214a46cdd2.png">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Not Found Route -  Desktop
+
+<img width="1420" alt="not_found_desktop" src="https://user-images.githubusercontent.com/13912119/198896272-ac70d122-d8b0-4c2b-a32e-7603c17fd015.png">
+
+#### Not Found Route - -  Mobile
+
+<img width="419" alt="page_not_found_mobile" src="https://user-images.githubusercontent.com/13912119/198896276-f986c79e-b8ba-49f3-bcdd-217bd79b4fcb.png">
+
+
